@@ -1,2 +1,0 @@
-# MyoGains
-Gainzzzzzzzzzzzzzzzz
