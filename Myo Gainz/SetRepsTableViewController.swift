@@ -12,11 +12,26 @@ class SetRepsTableViewController: UITableViewController {
     @IBOutlet weak var workoutLabel: UILabel!
     @IBOutlet weak var repsLabel: UILabel!
     
-    var workoutType = Int()
+    var workouts : [String]?
+    var workoutType : ExerciseType?
+    
+    enum ExerciseType : String {
+        case Shoulders = "Shoulders"
+        case Chest = "Chest"
+        case Back = "Back"
+        case Biceps = "Biceps"
+        case Triceps = "Triceps"
+        case Legs = "Legs"
+    }
+    
+    func setExerciseType(type : ExerciseType) {
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        workouts = ["Shoulder Press", "Shrugs", "Lateral Raises", "Front Raises",  "Upright Rows"]
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -32,70 +47,23 @@ class SetRepsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    override func tableView( tableView : UITableView,  titleForHeaderInSection section: Int)->String {
-        switch(section) {
-        //set header for each section of the tableView
-        case 1:return "Interval 1"
-        case 2:return "Interval 2"
-        case 3:return "Interval 3"
-        default :return ""
-        }
-    }
-    
-    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 20.0
-    }
-    
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("repCell", forIndexPath: indexPath) as! setRepsTableViewCell
+        return (workouts?.count)!
         
-        // configure workoutLabel text to be the same as WorkoutListTableViewController
-        switch workoutType {
-        case 1:
-            switch indexPath.row {
-            case 1:
-                cell.detailTextLabel?.text = "Shoulder Press"
-            case 2:
-                cell.detailTextLabel?.text = "Lateral Raises"
-            case 3:
-                cell.detailTextLabel?.text = "Front Raises"
-            default:
-                break;
-            }
-        case 2:
-            switch indexPath.row {
-            case 1:
-                cell.detailTextLabel?.text = "Shoulder Press"
-            case 2:
-                cell.detailTextLabel?.text = "Lateral Raises"
-            case 3:
-                cell.detailTextLabel?.text = "Front Raises"
-            default:
-                break;
-            }
-        case 3:
-            switch indexPath.row {
-            case 1:
-                cell.detailTextLabel?.text = "Shoulder Press"
-            case 2:
-                cell.detailTextLabel?.text = "Lateral Raises"
-            case 3:
-                cell.detailTextLabel?.text = "Front Raises"
-            default:
-                break;
-            }
-        default:
-            break;
-        }
-        return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80.0
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> SetRepsTableViewCell {
+        let repCell = tableView.dequeueReusableCellWithIdentifier("repCell", forIndexPath: indexPath)
+        repCell.numberOfSets? = "0"
+        repCell.exerciseName? = workouts![indexPath.row]
+        return repCell
     }
 
 }

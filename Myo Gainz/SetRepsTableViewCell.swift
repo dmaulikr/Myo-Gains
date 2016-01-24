@@ -10,6 +10,10 @@ import UIKit
 
 class SetRepsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var exerciseName: UILabel!
+    @IBOutlet weak var numberOfSets: UILabel!
+    @IBOutlet weak var setIncrement: UIStepper!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
