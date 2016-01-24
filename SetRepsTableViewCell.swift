@@ -1,14 +1,14 @@
 //
-//  setRepsTableViewCell.swift
+//  SetRepsTableViewCell.swift
 //  Myo Gainz
 //
-//  Created by Matthew Dias on 2016-01-23.
+//  Created by Matthew Dias on 2016-01-24.
 //  Copyright © 2016 Myo Something. All rights reserved.
 //
 
 import UIKit
 
-class setRepsTableViewCell: UITableViewCell {
+class SetRepsTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,4 +20,5 @@ class setRepsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
 }
